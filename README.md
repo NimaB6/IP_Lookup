@@ -19,6 +19,21 @@ That's it — the app runs at `http://localhost:3000`. 🎉
 
 ---
 
+## Projektstruktur
+
+├── backend/
+│   ├── main.py         
+├── frontend/
+│   ├── assets/
+│       └── fonts/
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── script.js
+│   └── index.html     
+
+---
+
 ## ✨ What it does
 
 - 📡 **Live metrics** — real-time CPU, RAM, disk and network stats via WebSockets
