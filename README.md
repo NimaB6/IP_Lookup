@@ -1,53 +1,67 @@
-# 🖥️ Server Monitoring Platform
+# 🔍 server-monitoring-platform
 
-A real-time server monitoring platform built with FastAPI and React. Keep an eye on your infrastructure — CPU, memory, disk, network — all from one clean dashboard, live.
+<img width="1913" height="738" alt="image" src="https://github.com/user-attachments/assets/921e0155-53de-4683-9683-82e258b92c73" />
+
+
+Eine einfache Website, mit der man die IP-Adresse einer beliebigen URL herausfinden kann — gebaut mit FastAPI und reinem HTML/CSS/JavaScript.
 
 ---
 
-## 🚀 Getting started
+## 🚀 Installation & Start
 
-Make sure you have Python 3.11+, Node.js 18+ and Docker installed, then:
+Stelle sicher, dass Python 3.11+ installiert ist, dann:
 
 ```bash
 git clone https://github.com/NimaB6/server-monitoring-platform-.git
 cd server-monitoring-platform-
-cp .env.example .env
-docker compose up -d
+
+Die App läuft dann unter `http://localhost:5500`. 🎉
+
+
 ```
+## 📁 Projektstruktur
 
-That's it — the app runs at `http://localhost:3000`. 🎉
-
----
-
-## Projektstruktur
-
+```
+server-monitoring-platform/
 ├── backend/
-│   ├── main.py         
+│   └── main.py
 ├── frontend/
 │   ├── assets/
-│       └── fonts/
+│   │   └── fonts/
 │   ├── css/
-│   │   └── style.css
+│   │   ├── style.css
+│   │   └── authors.css
 │   ├── js/
 │   │   └── script.js
-│   └── index.html     
+│   ├── index.html
+│   └── authors.html
+```
+---
+
+## ✨ Was die Website kann
+
+- 🔍 **IP-Abfrage** — URL eingeben und sofort die IP-Adresse erhalten
+- ⚡ **Schnell** — einfache und direkte Abfrage ohne Umwege
+- 🎨 **Modernes Design** — dunkles Theme mit schönen Animationen
+- 📱 **Responsive** — funktioniert auf Desktop und Handy
+- ⌨️ **Enter-Taste** — Suche auch per Tastatur möglich
+- ❌ **Fehlerbehandlung** — klare Fehlermeldung bei ungültiger URL
 
 ---
 
-## ✨ What it does
+## 🛠️ Technologien
 
-- 📡 **Live metrics** — real-time CPU, RAM, disk and network stats via WebSockets
-- 🖥️ **Multi-server** — watch all your machines from one place
-- 🔔 **Alerts** — set thresholds and get notified when things go sideways
-- 📊 **History** — browse past metrics with interactive charts
-- 🔐 **Auth** — JWT-based login with role management
-- 📄 **API docs** — auto-generated Swagger UI at `/docs`
+**Backend**
+- Python
+
+**Frontend**
+- HTML
+- CSS
+- JavaScript
 
 ---
 
-## 👥 Authors
+## 👥 Autoren
 
 - **Nima Bahrami** — [@NimaB6](https://github.com/NimaB6)
 - **Sobhan Haerizadeh** — [@Sobhanhaerizadeh](https://github.com/Sobhanhaerizadeh)
-
----
