@@ -10,16 +10,12 @@ Gebaut mit FastAPI im Backend und purem HTML, CSS und JavaScript im Frontend —
 ---
 
 ## 🚀 Installation & Start
-
 Stelle sicher, dass Python 3.11+ installiert ist, dann:
-
 ```bash
-git clone https://github.com/NimaB6/server-monitoring-platform-.git
+git clone https://github.com/NimaB6/IP_Lookup.git
 cd IP_Lookup
-
 ```
 Die App läuft dann unter `http://localhost:5500`. 🎉
-
 ---
 
 ## ✨ Features
