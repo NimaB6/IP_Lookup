@@ -4,34 +4,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IP Lookup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Navigation -->
+
+  <!-- Nav -->
   <nav>
-    <span class="nav-logo"> <a href="index.html"> 🔍 Network Project </a> </span>
+    <span class="nav-logo"><a href="index.html">IP Lookup</a></span>
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="authors.html">Authors</a>
     </div>
   </nav>
 
+  <!-- Content -->
+  <div class="card">
+    <div class="card-label">Network Tool</div>
+    <div class="panel">
+      <h1>IP <span>Lookup</span></h1>
+      <p class="subtitle">Domain eingeben und IP-Adresse herausfinden</p>
 
-  <!-- Main Content / NS Lookup -->
-  <div class ="card">
-    <h1> 🔍 IP Lookup </h1>
-    <p class="subtitle">Website-URL eingeben und IP-Adresse herausfinden</p>
+      <div class="input-row">
+        <div class="input-wrap">
+          <span class="input-prefix">~/</span>
+          <input type="text" id="urlInput" placeholder="github.com" autocomplete="off" />
+        </div>
+        <button id="lookupBtn">Suchen</button>
+      </div>
 
-    <div class="input-row">
-      <input type="text" id="urlInput" placeholder="Z.B. www.github.com" />
-      <button id="lookupBtn">Suchen</button>
+      <div id="result" class="result hidden">
+        <div class="result-label">IP-Adresse</div>
+        <div class="result-ip"></div>
+      </div>
+      <div id="error" class="error hidden"></div>
     </div>
-
-    <div id="result" class="result hidden"></div>
-    <div id="error"  class="error hidden"></div>
   </div>
-  
-  <script src="js/script.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
