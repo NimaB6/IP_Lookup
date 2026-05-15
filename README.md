@@ -1,9 +1,11 @@
-# 🔍 server-monitoring-platform
+# 🔍 IP lookup
 
-<img width="1913" height="738" alt="image" src="https://github.com/user-attachments/assets/921e0155-53de-4683-9683-82e258b92c73" />
+<img width="2551" height="954" alt="image" src="https://github.com/user-attachments/assets/ea4d61a6-faee-4ca7-a185-ee81c94585a9" />
+<img width="2549" height="900" alt="image" src="https://github.com/user-attachments/assets/fefccbe4-6814-4e0d-b141-ad5c94502189" />
 
+🌐 Gib eine Domain ein und finde sofort die IP-Adresse heraus.
+Gebaut mit FastAPI im Backend und purem HTML, CSS und JavaScript im Frontend — schnell, minimalistisch und direkt. ⚡
 
-Eine einfache Website, mit der man die IP-Adresse einer beliebigen URL herausfinden kann — gebaut mit FastAPI und reinem HTML/CSS/JavaScript.
 
 ---
 
@@ -13,55 +15,40 @@ Stelle sicher, dass Python 3.11+ installiert ist, dann:
 
 ```bash
 git clone https://github.com/NimaB6/server-monitoring-platform-.git
-cd server-monitoring-platform-
+cd IP_Lookup
 
+```
 Die App läuft dann unter `http://localhost:5500`. 🎉
 
-
-```
-## 📁 Projektstruktur
-
-```
-server-monitoring-platform/
-├── backend/
-│   └── main.py
-├── frontend/
-│   ├── assets/
-│   │   └── fonts/
-│   ├── css/
-│   │   ├── style.css
-│   │   └── authors.css
-│   ├── js/
-│   │   └── script.js
-│   ├── index.html
-│   └── authors.html
-```
 ---
 
-## ✨ Was die Website kann
+## ✨ Features
 
-- 🔍 **IP-Abfrage** — URL eingeben und sofort die IP-Adresse erhalten
-- ⚡ **Schnell** — einfache und direkte Abfrage ohne Umwege
-- 🎨 **Modernes Design** — dunkles Theme mit schönen Animationen
+- 🔍 **IP-Abfrage** — Domain eingeben und sofort die IP-Adresse erhalten
+- ⚡ **Rate Limiting** — maximal 3 Anfragen, dann 5 Sekunden Cooldown
+- 🌍 **Mehrsprachig** — Deutsch und Englisch (DE / EN)
+- 🎨 **Modernes Design** — dunkles Theme mit Animationen
 - 📱 **Responsive** — funktioniert auf Desktop und Handy
 - ⌨️ **Enter-Taste** — Suche auch per Tastatur möglich
-- ❌ **Fehlerbehandlung** — klare Fehlermeldung bei ungültiger URL
+- ❌ **Fehlerbehandlung** — klare Fehlermeldung bei ungültiger URL oder nicht erreichbarer API
+- 🧹 **URL-Bereinigung** — `https://` wird automatisch entfernt
 
 ---
 
 ## 🛠️ Technologien
-
 **Backend**
-- Python
+- Python 3.11+
+- FastAPI
+- Uvicorn
 
 **Frontend**
-- HTML
-- CSS
-- JavaScript
+- HTML / CSS / JavaScript
+- SweetAlert2
 
 ---
-
 ## 👥 Autoren
-
 - **Nima Bahrami** — [@NimaB6](https://github.com/NimaB6)
 - **Sobhan Haerizadeh** — [@Sobhanhaerizadeh](https://github.com/Sobhanhaerizadeh)
+
+
+© 2025–2026 · Made with ♥
