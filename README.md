@@ -16,8 +16,8 @@ git clone https://github.com/NimaB6/IP_Lookup.git
 cd IP_Lookup
 ```
 Die App läuft dann unter `http://localhost:5500`. 🎉
----
 
+---
 ## ✨ Features
 
 - 🔍 **IP-Abfrage** — Domain eingeben und sofort die IP-Adresse erhalten
