@@ -1,6 +1,7 @@
 const urlInput = document.getElementById("urlInput");
 const urlBtn = document.getElementById("lookupBtn");
-const resultSpan = document.getElementById("result");
+const resultDiv = document.getElementById("result");
+const resultIp = resultDiv.querySelector(".result-ip");
 const erorrSpan = document.getElementById("error");
 urlBtn.addEventListener("click", checkInput);
 urlInput.addEventListener("keydown", logKey);
@@ -9,10 +10,10 @@ let requestCount = 0;
 
 function checkInput() {
     if (urlInput.value.trim() === "") {
-        resultSpan.classList.add("hidden");
+        resultDiv.classList.add("hidden");
         urlInput.style.borderColor = "var(--danger)";
         erorrSpan.classList.remove("hidden");
-        erorrSpan.textContent = "URL darf nicht leer sein.";
+        erorrSpan.textContent = t('error.empty');
     }
     else {
         erorrSpan.classList.add("hidden");
@@ -31,25 +32,23 @@ async function lookupIp() {
 
     urlBtn.disabled = true;
 
-
     if (requestCount >= 3) {
-        resultSpan.classList.add("hidden");
+        resultDiv.classList.add("hidden");
         erorrSpan.classList.remove("hidden");
         urlInput.style.borderColor = "var(--danger)";
         urlBtn.disabled = true;
 
         let seconds = 5;
-        erorrSpan.textContent = `Bitte ${seconds} Sekunden warten!`;
+        erorrSpan.textContent = t('error.rate-limit', { n: seconds });
 
         const interval = setInterval(() => {
             seconds--;
-            erorrSpan.textContent = `Bitte ${seconds} Sekunden warten!`;
+            erorrSpan.textContent = t('error.rate-limit', { n: seconds });
             if (seconds == 0) {
                 clearInterval(interval);
                 urlInput.style.borderColor = "";
                 erorrSpan.classList.add("hidden");
                 urlBtn.disabled = false;
-
             }
         }, 1000);
 
@@ -66,8 +65,8 @@ async function lookupIp() {
 
     Swal.fire({
         theme: 'dark',
-        title: 'Loading...',
-        text: 'Bitte warten...',
+        title: t('loading.title'),
+        text: t('loading.text'),
         allowOutsideClick: false,
         didOpen: () => {
             Swal.showLoading();
@@ -80,14 +79,14 @@ async function lookupIp() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ url: urlInput.value })
+            body: JSON.stringify({ url: urlInput.value, lang: currentLang })
         });
 
         const data = await response.json();
 
         if (data.detail) {
             Swal.close();
-            resultSpan.classList.add("hidden");
+            resultDiv.classList.add("hidden");
             urlInput.style.borderColor = "var(--danger)";
             erorrSpan.classList.remove("hidden");
             erorrSpan.textContent = data.detail;
@@ -96,8 +95,8 @@ async function lookupIp() {
         else {
             Swal.close();
             erorrSpan.classList.add("hidden");
-            resultSpan.textContent = "IP-Adresse: " + data.ip;
-            resultSpan.classList.remove("hidden");
+            resultIp.textContent = data.ip;
+            resultDiv.classList.remove("hidden");
             urlInput.style.borderColor = "";
         }
 
@@ -105,10 +104,10 @@ async function lookupIp() {
 
     catch (error) {
         Swal.close();
-        resultSpan.classList.add("hidden");
+        resultDiv.classList.add("hidden");
         erorrSpan.classList.remove("hidden");
         urlInput.style.borderColor = "var(--danger)";
-        erorrSpan.textContent = "API ist nicht erreichbar!";
+        erorrSpan.textContent = t('error.api');
     }
 
     urlBtn.disabled = false;

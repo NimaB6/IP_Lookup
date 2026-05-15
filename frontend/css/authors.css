@@ -1,4 +1,5 @@
 body {
+  justify-content: flex-start;
   flex-direction: column;
   align-items: center;
   padding: 100px 20px 60px;
@@ -12,20 +13,24 @@ body {
 }
 
 .header .eyebrow {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.22em;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   color: var(--accent2);
   text-transform: uppercase;
   margin-bottom: 14px;
 }
 
 .header h1 {
-  font-family: 'DM Serif Display', serif;
   font-size: clamp(1.8rem, 5vw, 3rem);
-  font-weight: 400;
+  font-weight: 600;
   color: #fff;
+  letter-spacing: -0.02em;
   line-height: 1.1;
+}
+
+.header h1 span {
+  color: var(--accent);
 }
 
 .header p {
@@ -46,20 +51,20 @@ body {
 .author-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 16px;
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 18px;
   min-height: 440px;
   transition: border-color 0.25s, transform 0.25s;
-  animation: rise 0.5s ease both;
+  animation: rise 0.6s cubic-bezier(0.16,1,0.3,1) both;
 }
 
 .author-card:nth-child(2) { animation-delay: 0.1s; }
 
 .author-card:hover {
-  border-color: rgba(91, 140, 255, 0.45);
+  border-color: rgba(91,140,255,0.35);
   transform: translateY(-4px);
 }
 
@@ -73,25 +78,25 @@ body {
   width: 68px;
   height: 68px;
   border-radius: 50%;
-  border: 2px solid rgba(91, 140, 255, 0.3);
+  border: 2px solid rgba(91,140,255,0.3);
   object-fit: cover;
   flex-shrink: 0;
 }
 
 .name {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #fff;
+  letter-spacing: -0.01em;
 }
 
 .role {
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
   color: var(--accent2);
   margin-top: 5px;
   letter-spacing: 0.07em;
 }
-
 
 hr {
   border: none;
@@ -99,14 +104,12 @@ hr {
   margin: 0;
 }
 
-
 .bio {
   font-size: 0.875rem;
   color: var(--muted);
   line-height: 1.75;
   flex: 1;
 }
-
 
 .links {
   display: flex;
@@ -129,15 +132,15 @@ hr {
 
 .link:hover {
   color: var(--text);
-  background: rgba(91, 140, 255, 0.06);
-  border-color: rgba(91, 140, 255, 0.4);
+  background: rgba(91,140,255,0.06);
+  border-color: rgba(91,140,255,0.4);
 }
 
 .link-icon {
   width: 30px;
   height: 30px;
   border-radius: 8px;
-  background: rgba(91, 140, 255, 0.08);
+  background: rgba(91,140,255,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,7 +150,7 @@ hr {
 }
 
 .link:hover .link-icon {
-  background: rgba(91, 140, 255, 0.15);
+  background: rgba(91,140,255,0.15);
 }
 
 .link-icon svg {
@@ -167,7 +170,6 @@ hr {
   opacity: 0.7;
   transform: translate(2px, -2px);
 }
-
 
 .meta-item {
   display: flex;
@@ -193,34 +195,8 @@ hr {
   height: 13px;
 }
 
-
-.footer {
-  margin-top: 60px;
-  padding-bottom: 32px;
-  text-align: center;
-  font-family: 'DM Mono', monospace;
-  font-size: 0.7rem;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  line-height: 2;
-  opacity: 0.7;
-}
-
-
-.nav-links a.active { color: var(--accent2); }
-
-
 @media (max-width: 600px) {
-  .authors-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .author-card {
-    min-height: unset;
-    padding: 24px;
-  }
-
-  .header h1 {
-    font-size: 1.6rem;
-  }
+  .authors-grid { grid-template-columns: 1fr; }
+  .author-card { min-height: unset; padding: 24px; }
+  .header h1 { font-size: 1.6rem; }
 }

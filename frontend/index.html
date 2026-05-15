@@ -1,48 +1,76 @@
+<!-- 
+  index.html
+  Hauptseite des IP Lookup Projekts
+  Gibt die IP-Adresse einer eingegebenen Domain zurück
+  Autoren: Nima Bahrami & Sobhan Haerizadeh
+  © 2025-2026
+-->
+
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IP Lookup</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
   <!-- Nav -->
   <nav>
     <span class="nav-logo"><a href="index.html">IP Lookup</a></span>
     <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="authors.html">Authors</a>
+      <a href="index.html" class="active" data-i18n="nav.home">Home</a>
+      <a href="authors.html" data-i18n="nav.authors">Authors</a>
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="de">DE</button>
+        <span class="lang-sep">|</span>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
     </div>
   </nav>
 
   <!-- Content -->
   <div class="card">
-    <div class="card-label">Network Tool</div>
+    <div class="card-label" data-i18n="card.label">IP Lookup</div>
     <div class="panel">
       <h1>IP <span>Lookup</span></h1>
-      <p class="subtitle">Domain eingeben und IP-Adresse herausfinden</p>
+      <p class="subtitle" data-i18n="hero.subtitle">Domain eingeben und IP-Adresse herausfinden</p>
 
       <div class="input-row">
         <div class="input-wrap">
           <span class="input-prefix">~/</span>
           <input type="text" id="urlInput" placeholder="github.com" autocomplete="off" />
         </div>
-        <button id="lookupBtn">Suchen</button>
+        <button id="lookupBtn" data-i18n="btn.search">Suchen</button>
       </div>
 
       <div id="result" class="result hidden">
-        <div class="result-label">IP-Adresse</div>
+        <div class="result-label" data-i18n="result.label">IP-Adresse</div>
         <div class="result-ip"></div>
       </div>
       <div id="error" class="error hidden"></div>
     </div>
   </div>
 
+  <!-- Footer -->
+  <footer class="footer">
+    © 2025–2026 · Made with ♥ <br />
+    <span data-i18n="footer.made-by">Programmiert von</span>
+    <a href="https://github.com/NimaB6" target="_blank" class="footer-link">NimaB6</a> 
+    <span data-i18n="footer.and">und</span>
+    <a href="https://sobhanhaerizadeh.de/" target="_blank" class="footer-link">Sobidev</a>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/script.js"></script>
 </body>
+
 </html>

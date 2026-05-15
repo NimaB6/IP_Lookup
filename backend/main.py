@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from urllib.parse import urlparse
+from typing import Optional
 
 import socket
 
@@ -15,8 +16,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+MESSAGES = {
+    "de": {
+        "invalid_url": "Die URL ist ungültig oder konnte nicht aufgelöst werden.",
+        "server_error": "Serverfehler.",
+    },
+    "en": {
+        "invalid_url": "The URL is invalid or could not be resolved.",
+        "server_error": "Server error.",
+    },
+}
+
 class WebsiteRequest(BaseModel):
     url: str
+    lang: Optional[str] = "de"
 
 @app.get("/")
 def home() -> dict:
@@ -26,6 +39,9 @@ def home() -> dict:
 
 @app.post("/lookup")
 def lookup_ip(website: WebsiteRequest) -> dict:
+    lang = website.lang if website.lang in MESSAGES else "de"
+    msgs = MESSAGES[lang]
+
     url = website.url
     if "://" in url:
         url = urlparse(url).hostname
@@ -40,11 +56,11 @@ def lookup_ip(website: WebsiteRequest) -> dict:
     except socket.gaierror:
         raise HTTPException(
             status_code=400,
-            detail="Die URL ist ungültig oder konnte nicht aufgelöst werden.",
+            detail=msgs["invalid_url"],
         )
 
     except Exception:
         raise HTTPException(
             status_code=500,
-            detail="Serverfehler.",
+            detail=msgs["server_error"],
         )
