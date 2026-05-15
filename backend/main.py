@@ -1,20 +1,29 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import socket
 
 app = FastAPI()
 
-class Website(BaseModel):
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class WebsiteRequest(BaseModel):
     url: str
 
 @app.get("/")
-def home():
+def home() -> dict:
     return {
         "message": "IP Lookup API is running"
     }
 
 @app.post("/lookup")
-def lookup_ip(website: Website):
+def lookup_ip(website: WebsiteRequest) -> dict:
 
     try:
         ip = socket.gethostbyname(website.url)
@@ -24,20 +33,14 @@ def lookup_ip(website: Website):
             "ip": ip
         }
 
-    except:
-        return {
-            "error": "Invalid website URL"
-        }
+    except socket.gaierror:
+        raise HTTPException(
+            status_code=400,
+            detail="Die URL ist ungültig oder konnte nicht aufgelöst werden.",
+        )
 
-
-
-
-
-
-
-
-
-
-
-# TODO: Neue Route hinzufügen → GET /servers
-#  @Nima Schau dir an, wie die /lookup Route oben aufgebaut ist und mach das gleiche Prinzip.
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="Serverfehler.",
+        )
