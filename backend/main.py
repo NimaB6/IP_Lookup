@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from urllib.parse import urlparse
+
 import socket
 
 app = FastAPI()
@@ -24,12 +26,14 @@ def home() -> dict:
 
 @app.post("/lookup")
 def lookup_ip(website: WebsiteRequest) -> dict:
-
+    url = website.url
+    if "://" in url:
+        url = urlparse(url).hostname
     try:
-        ip = socket.gethostbyname(website.url)
+        ip = socket.gethostbyname(url)
 
         return {
-            "url": website.url,
+            "url": url,
             "ip": ip
         }
 
