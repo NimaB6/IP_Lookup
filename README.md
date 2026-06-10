@@ -14,6 +14,12 @@ Stelle sicher, dass Python 3.11+ installiert ist, dann:
 ```bash
 git clone https://github.com/NimaB6/IP_Lookup.git
 cd IP_Lookup
+
+# Abhängigkeiten installieren
+pip install -r requirements.txt
+
+# Server starten
+uvicorn main:app --reload --port 5500
 ```
 Die App läuft dann unter `http://localhost:5500`. 🎉
 
